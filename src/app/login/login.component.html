@@ -1,0 +1,14 @@
+<div>
+    <h1>Login</h1>
+    <label for="name">Name</label>
+    <input id="name" [(ngModel)]="login.name" placeholder="name"><span></span>
+    <label>Password</label>
+    <input  id="password" [(ngModel)]="login.password" placeholder="password" type="password">
+    <button type="button" (click)="setLocalStorage()" (click)="checkNameAndPassword()"></button>
+</div>
+<div *ngIf="isLoggedIn">
+    <h3>ACCESSO VERIFICADO</h3>
+</div>
+<div *ngIf="login.name !== fakeData.name">
+    <h3>ACCESSO DENEGADO</h3>
+</div>
