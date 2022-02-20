@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroService, Hero } from "../../../hero.service"
 
 @Component({
   selector: 'app-save-heroes',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaveHeroesComponent implements OnInit {
 
-  constructor() { }
+  savedHeros: Hero[] = []
+
+  constructor(public heroService : HeroService) {
+   }
 
   ngOnInit(): void {
+    this.getSavedCharacters()
   }
 
+  removeCharacter(id: string) {
+    this.heroService.removeSavedCharacter(id)
+  }
+  addCharacter(hero: Hero) {
+    this.heroService.addPinnedCharacters(hero)
+    }
+  getSavedCharacters() {
+    this.savedHeros = this.heroService.getSavedCharacters()
+  }
 }

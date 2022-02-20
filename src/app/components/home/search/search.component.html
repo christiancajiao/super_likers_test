@@ -1,0 +1,16 @@
+<input type="text" [(ngModel)]="heroName" style="height: 30px; border: 0.3px solid black; margin-top: 10px; width: 400px;"/>
+            <button mat-raised-button color="primary" (click)="fecthCharacter()">buscar</button>
+
+            <div *ngFor="let hero of result" style="width: 600px">
+                <mat-card class="example-card">
+                    <mat-card-title-group>
+                      <img mat-card-sm-image src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" >
+                      <mat-card-title>Nombre: {{hero.name}}</mat-card-title>
+                    </mat-card-title-group>
+                    <mat-card-content>
+                        Informacion: {{hero.description}}
+                    </mat-card-content>
+                    <button mat-raised-button color="primary" (click)="saveCharacter(hero)">Guardar</button>
+                  </mat-card>
+            </div>
+        

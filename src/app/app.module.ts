@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { Routes } from "@angular/router";
 import { LoginComponent } from './login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomePageComponent } from './components/home/home-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,6 +15,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SaveHeroesComponent } from './components/home/save-heroes/save-heroes.component';
 import { PinedHeroesComponent } from './components/home/pined-heroes/pined-heroes.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { SearchComponent } from './components/home/search/search.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+
 
 
 
@@ -25,7 +33,8 @@ import { PinedHeroesComponent } from './components/home/pined-heroes/pined-heroe
     LoginComponent,
     HomePageComponent,
     SaveHeroesComponent,
-    PinedHeroesComponent
+    PinedHeroesComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +47,10 @@ import { PinedHeroesComponent } from './components/home/pined-heroes/pined-heroe
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatTabsModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatDialogModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroService, Hero } from "../../../hero.service"
 
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
 @Component({
   selector: 'app-pined-heroes',
   templateUrl: './pined-heroes.component.html',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinedHeroesComponent implements OnInit {
 
-  constructor() { }
+  pinnedCharacters: Hero[] = []
+
+  constructor(public heroService : HeroService) { }
 
   ngOnInit(): void {
+    this.getPinnedCharacters()
   }
 
+
+  getPinnedCharacters() {
+    this.pinnedCharacters = this.heroService.pinnedCharacters
+  }
 }

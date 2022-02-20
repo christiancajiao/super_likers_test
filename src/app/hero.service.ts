@@ -1,10 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+type Thumbnail =  {
+  path: string,
+  extension: string,
+}
+
+
+export type Hero = {
+  id: string,
+  name: string, 
+  thumbnail: Thumbnail,
+  description: string
+} 
+
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
+
+  savedCharacters: Array<Hero> = [];
+  pinnedCharacters: Array<Hero> = [];
+
 
 
   apiKey:string = "6184f39aed6cc186878c4b6c4e92fa4c"
@@ -18,5 +36,25 @@ export class HeroService {
 
   getCharacter(name: string) {
     return this.http.get(`${this.url}?nameStartsWith=${name}&ts=1&apikey=${this.apiKey}&hash=${this.hash}`)
+  }
+  saveCharacter(hero: Hero) {
+    this.savedCharacters.push(hero)
+    console.log(hero)
+  }
+  getSavedCharacters() {
+    return this.savedCharacters
+  }
+  removeSavedCharacter(id: string) {
+    const updateCharacters = this.savedCharacters.filter(c => c.id !== id)
+
+    this.savedCharacters = updateCharacters
+  }
+  addPinnedCharacters(hero : any) {
+    this.pinnedCharacters.push(hero)
+    localStorage.setItem("pinned Characters", JSON.stringify(this.pinnedCharacters))
+   console.log(localStorage.getItem("pinned Characters")) 
+  }
+  getPinnedCharacters() {
+    return this.pinnedCharacters
   }
 }
