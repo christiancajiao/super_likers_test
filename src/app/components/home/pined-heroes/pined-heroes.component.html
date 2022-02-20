@@ -1,14 +1,10 @@
-
+<h1 style="margin: 10px;"> Mis Personajes</h1>
 <div *ngFor="let hero of heroService.pinnedCharacters">
     <mat-card class="example-card">
         <mat-card-title-group>
-          <mat-card-title>nombre: {{hero.name}}</mat-card-title>
+          <mat-card-title>{{hero.name}}</mat-card-title>
           <img mat-card-sm-image src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" >
         </mat-card-title-group>
-        <mat-card-content>
-            information: {{hero.description}}
-        </mat-card-content>
         <button mat-button >Details</button>
       </mat-card>
-
 </div>

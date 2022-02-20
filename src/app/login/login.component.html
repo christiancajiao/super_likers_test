@@ -1,15 +1,14 @@
-<div>
-
-
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh">
       <form [formGroup]="form" (ngSubmit)="setLocalStorage()" style="width: 300px; display: flex; flex-direction: column;align-items: center; ">
+        <h1>Login</h1>
         <mat-form-field appearance="fill" style="display: flex; flex-direction: column;">
-            <mat-label>Name</mat-label>
+            <mat-label>Nombre</mat-label>
             <input matInput formControlName="name">
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
+            <mat-label>Contrasena</mat-label>
             <input type="password" matInput formControlName="password">
           </mat-form-field>
-          <button type="submit" mat-raised-button color="primary" >Enter</button>
+          <button type="submit" mat-raised-button color="primary" >Entrar</button>
       </form>
     </div>

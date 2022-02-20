@@ -51,8 +51,8 @@ export class HeroService {
   }
   addPinnedCharacters(hero : any) {
     this.pinnedCharacters.push(hero)
-    localStorage.setItem("pinned Characters", JSON.stringify(this.pinnedCharacters))
-   console.log(localStorage.getItem("pinned Characters")) 
+    localStorage.setItem("pinnedCharacters", JSON.stringify(this.pinnedCharacters))
+   console.log(localStorage.getItem("pinnedCharacters")) 
   }
   getPinnedCharacters() {
     return this.pinnedCharacters

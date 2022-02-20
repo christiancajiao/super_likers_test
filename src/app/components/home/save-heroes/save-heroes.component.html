@@ -1,6 +1,6 @@
 
 <div *ngFor="let hero of heroService.savedCharacters">
-    <mat-card class="example-card">
+    <mat-card class="example-card" style="width:600px">
         <mat-card-title-group>
           <mat-card-title>nombre: {{hero.name}}</mat-card-title>
           <img mat-card-sm-image src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}" >
