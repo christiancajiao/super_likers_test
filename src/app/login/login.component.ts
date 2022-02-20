@@ -1,4 +1,7 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -7,6 +10,9 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+form: FormGroup;
+
+
  login = {
     name: "",
     password: ""
@@ -14,36 +20,38 @@ export class LoginComponent implements OnInit {
 
 isLoggedIn = false;
 
-fakeData = {
-  name: "carlos",
-  password: "password"
-}
+
  
   setLocalStorage(){
 
-    localStorage.setItem("name", this.login.name)
-    localStorage.setItem("password", this.login.password)
-  }
-  obtainLocalStorage() {
-    let name = localStorage.getItem("name")
-    let password = localStorage.getItem("password")
-  }
-  checkNameAndPassword() {
-    if (this.login.name === this.fakeData.name && this.login.password === this.fakeData.password) {
-      this.isLoggedIn = true
-    }
+    localStorage.setItem("name", this.form.value.name)
+    localStorage.setItem("password", this.form.value.password)
+    console.log(this.form.value)
 
-    console.log(this.isLoggedIn)
+    if(localStorage.getItem("name") === "carlos" && localStorage.getItem("password") === "password") {
+      this.router.navigate(['home'])
+    } else {
+      this.error()
+    }
   }
-  constructor() { 
+  error() {
+    this._snackBar.open('Invalid Name or Password'), '', {
+      duration: 300,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    }
+  }
+  constructor( private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) { 
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      password: ['', Validators.required]
+
+    })
   }
 
   ngOnInit(): void {
-    console.log(this.isLoggedIn)
 
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
-  }
+  
 
 }

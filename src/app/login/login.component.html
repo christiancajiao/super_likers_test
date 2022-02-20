@@ -1,14 +1,15 @@
 <div>
-    <h1>Login</h1>
-    <label for="name">Name</label>
-    <input id="name" [(ngModel)]="login.name" placeholder="name"><span></span>
-    <label>Password</label>
-    <input  id="password" [(ngModel)]="login.password" placeholder="password" type="password">
-    <button type="button" (click)="setLocalStorage()" (click)="checkNameAndPassword()"></button>
-</div>
-<div *ngIf="isLoggedIn">
-    <h3>ACCESSO VERIFICADO</h3>
-</div>
-<div *ngIf="login.name !== fakeData.name">
-    <h3>ACCESSO DENEGADO</h3>
-</div>
+
+
+      <form [formGroup]="form" (ngSubmit)="setLocalStorage()" style="width: 300px; display: flex; flex-direction: column;align-items: center; ">
+        <mat-form-field appearance="fill" style="display: flex; flex-direction: column;">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" >Enter</button>
+      </form>
+    </div>

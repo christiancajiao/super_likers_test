@@ -12,11 +12,11 @@ export class HomePageComponent implements OnInit {
 
   constructor(private heroService : HeroService) { }
   fecthCharacter() {
-    this.heroService.getCharacter()
+    this.heroService.getCharacter(this.heroName)
 
   }
   ngOnInit(): void {
-  this.heroService.getCharacter().subscribe((data: any )=> {
+  this.heroService.getCharacter(this.heroName).subscribe((data: any )=> {
     this.heroName = data.data.results[0].name
    })
   }
